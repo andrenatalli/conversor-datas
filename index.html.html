@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Datas</title>
+</head>
+<body>
+  <h1>Conversor de Datas</h1>
+  <textarea id="entrada" style="width:100%; height:300px;"></textarea><br>
+  <button onclick="converterDatas()">Converter Datas</button>
+
+  <script>
+    function converterDatas() {
+      const input = document.getElementById("entrada");
+      const linhas = input.value.trim().split("\n");
+      const convertido = linhas.map(linha =>
+        linha.replace(/\b(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\b/g, (_, dt) => {
+          const d = new Date(dt);
+          if (isNaN(d)) return dt;
+          const p = n => String(n).padStart(2, '0');
+          return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} às ${p(d.getHours())}h${p(d.getMinutes())}m${p(d.getSeconds())}s`;
+        })
+      ).join("\n");
+      input.value = convertido;
+    }
+  </script>
+</body>
+</html>
+
