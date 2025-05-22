@@ -21,7 +21,10 @@
           return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()} às ${p(d.getHours())}h${p(d.getMinutes())}m${p(d.getSeconds())}s`;
         })
       ).join("\n");
-      input.value = convertido;
+
+      input.value = 
+        "Ei, time, boa tarde! Como o cliente só realizou X pagamentos para XXXX, poderiam baixar no HD e enviar para cliente? Datas abaixo:\n\n" + 
+        convertido;
     }
   </script>
 </body>
